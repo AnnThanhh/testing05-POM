@@ -11,18 +11,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ScreenshotUtil {
-    public static void capturescreenshot(WebDriver driver, String namePrefix){
+    public static void captureScreenshot(WebDriver driver, String namePrefix){
         //kiểm tra xem driver có hỗ trợ không
         if(!(driver instanceof TakesScreenshot)){
             System.out.println("Driver không hỗ trợ chụp màn hình");
         }
 
-        //thực hiện thao tác chụp mành hình và lưu tên file
+        //thực hiện thao tác chụp mành hình và lưu mục ảo
         File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
         //Tạo chuỗi thời gian
-        String timeStamp = new SimpleDateFormat("yyyyMMDD_HHmmss").format(new Date());
-
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//        20250713_091230
         //Tạo nơi lưu file hình ảnh
         File destFile = new File("screenshot/" + namePrefix + "_" + timeStamp + ".png");
 

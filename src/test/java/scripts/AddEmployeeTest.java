@@ -5,6 +5,7 @@ import pages.AddEmployee;
 import pages.DashboardPage;
 import pages.LoginPage;
 import utils.DriverFactory;
+import utils.ScreenshotUtil;
 
 public class AddEmployeeTest {
     public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class AddEmployeeTest {
         WebDriver driver = DriverFactory.getDriver();
         try{
             driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
-            Thread.sleep(5000);
+            Thread.sleep(1000);
 
             //lớp loginpage
             LoginPage loginPage = new LoginPage(driver);
@@ -46,9 +47,9 @@ public class AddEmployeeTest {
                 System.out.println("Kết quả k trùng khớp");
             }
 
-
         } catch (Exception e) {
             System.out.println("Lỗi: " + e.getMessage());
+            ScreenshotUtil.captureScreenshot(driver, "AddEmployeeTest");
         }finally {
             driver.quit();
         }
