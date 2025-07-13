@@ -8,7 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
 
-    public static WebDriver getDriver (String browserName){
+    public static WebDriver getDriver (){
+        String browserName = System.getProperty("browser", "chrome");
         WebDriver driver;
 
         switch (browserName.toLowerCase()){

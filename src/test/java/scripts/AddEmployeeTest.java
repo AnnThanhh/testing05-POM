@@ -1,21 +1,17 @@
 package scripts;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.AddEmployee;
 import pages.DashboardPage;
 import pages.LoginPage;
 import utils.DriverFactory;
-
-import javax.swing.plaf.TableHeaderUI;
 
 public class AddEmployeeTest {
     public static void main(String[] args) {
 //        WebDriverManager.chromedriver().setup();
 //        WebDriver driver = new ChromeDriver();
 //        driver.manage().window().maximize();
-        WebDriver driver = DriverFactory.getDriver("chrome");
+        WebDriver driver = DriverFactory.getDriver();
         try{
             driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
             Thread.sleep(5000);
@@ -25,7 +21,7 @@ public class AddEmployeeTest {
             loginPage.login("Admin", "admin123");
 
             System.out.println("Đăng nhập thành công");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
 
             DashboardPage dashboardPage = new DashboardPage(driver);
             dashboardPage.goToPimPage();
@@ -51,10 +47,10 @@ public class AddEmployeeTest {
             }
 
 
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             System.out.println("Lỗi: " + e.getMessage());
         }finally {
-//            driver.quit();
+            driver.quit();
         }
     }
 }
