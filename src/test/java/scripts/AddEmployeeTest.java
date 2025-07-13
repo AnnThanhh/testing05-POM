@@ -1,57 +1,112 @@
 package scripts;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import pages.AddEmployee;
 import pages.DashboardPage;
 import pages.LoginPage;
 import utils.DriverFactory;
+import utils.ExcelReader;
 import utils.ScreenshotUtil;
 
-public class AddEmployeeTest {
-    public static void main(String[] args) {
-//        WebDriverManager.chromedriver().setup();
-//        WebDriver driver = new ChromeDriver();
-//        driver.manage().window().maximize();
-        WebDriver driver = DriverFactory.getDriver();
-        try{
-            driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
-            Thread.sleep(1000);
+import java.time.Duration;
 
-            //lớp loginpage
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.login("Admin", "admin123");
+public class AddEmployeeTest extends BaseTest {
+//    public static void main(String[] args) {
+//        //beforeMethod || afterMethod : tiền xử lý và hậu xử lý của việc test
+////        WebDriverManager.chromedriver().setup();
+////        WebDriver driver = new ChromeDriver();
+////        driver.manage().window().maximize();
+//        WebDriver driver = DriverFactory.getDriver();
+//        try{
+//            driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
+//            Thread.sleep(1000);
+//
+//            //lớp loginpage
+//            LoginPage loginPage = new LoginPage(driver);
+//            loginPage.login("Admin", "admin123");
+//
+//            System.out.println("Đăng nhập thành công");
+//            Thread.sleep(2000);
+//
+//            DashboardPage dashboardPage = new DashboardPage(driver);
+//            dashboardPage.goToPimPage();
+//            System.out.println("Chuyển hướng sang Pim thành công");
+//            Thread.sleep(3000);
+//
+//            AddEmployee addEmployee = new AddEmployee(driver);
+//            addEmployee.goToAddEmployee();
+//            System.out.println("Chuyển hướng thành công");
+//            Thread.sleep(3000);
+//
+////            String firstName = "Testing";
+////            String lastName = "Automation";
+//
+//            String filePath = "src/test/java/resources/datatest.xlsv";
+////            Sheet sheet = excelreader.loadSheet("", "");
+////            string firstName = excelreader.getcelldata(sheet, ,)
+//            String firstName = ExcelReader.getCellData(filePath, "sheet1", 1, 0);//dòng 2(có vị trí index 1)l; cột 1/A (vị trí index 0)
+//            String lastName = ExcelReader.getCellData(filePath, "sheet1", 1,1);//dòng 2(có vị trí index 1)l; cột 2/B (vị trí index 1)
+//            String empId = addEmployee.addNewEmployee(firstName,lastName);
+//            System.out.println("Thêm thành công");
+//            Thread.sleep(5000);
+//
+//            Boolean isVerify = addEmployee.verifyNewEmployee(firstName, lastName, empId);
+//            if(isVerify){
+//                System.out.println("Kết quả trùng khớp");
+//            }else{
+//                System.out.println("Kết quả k trùng khớp");
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("Lỗi: " + e.getMessage());
+//            ScreenshotUtil.captureScreenshot(driver, "AddEmployeeTest");
+//        }finally {
+////            driver.quit();
+//        }
+//    }
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    @Test
+    public void AddEmployee(){
+        //chờ ô input username sẵn sàng
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username")));
+        //lớp loginpage
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("Admin", "admin123");
 
-            System.out.println("Đăng nhập thành công");
-            Thread.sleep(2000);
+        System.out.println("Đăng nhập thành công");
 
-            DashboardPage dashboardPage = new DashboardPage(driver);
-            dashboardPage.goToPimPage();
-            System.out.println("Chuyển hướng sang Pim thành công");
-            Thread.sleep(3000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='PIM']")));
+        DashboardPage dashboardPage = new DashboardPage(driver);
+        dashboardPage.goToPimPage();
+        System.out.println("Chuyển hướng sang Pim thành công");
 
-            AddEmployee addEmployee = new AddEmployee(driver);
-            addEmployee.goToAddEmployee();
-            System.out.println("Chuyển hướng thành công");
-            Thread.sleep(3000);
+        AddEmployee addEmployee = new AddEmployee(driver);
+        addEmployee.goToAddEmployee();
+        System.out.println("Chuyển hướng thành công");
+//            String firstName = "Testing";
+//            String lastName = "Automation";
 
-            String firstName = "Testing";
-            String lastName = "Automation";
-            String empId = addEmployee.addNewEmployee(firstName,lastName);
-            System.out.println("Thêm thành công");
-            Thread.sleep(5000);
+        String filePath = "src/test/java/resources/datatest.xlsv";
+//            Sheet sheet = excelreader.loadSheet("", "");
+//            string firstName = excelreader.getcelldata(sheet, ,)
+        String firstName = ExcelReader.getCellData(filePath, "sheet1", 1, 0);//dòng 2(có vị trí index 1)l; cột 1/A (vị trí index 0)
+        String lastName = ExcelReader.getCellData(filePath, "sheet1", 1,1);//dòng 2(có vị trí index 1)l; cột 2/B (vị trí index 1)
+        String empId = addEmployee.addNewEmployee(firstName,lastName);
+        System.out.println("Thêm thành công");
 
-            Boolean isVerify = addEmployee.verifyNewEmployee(firstName, lastName, empId);
-            if(isVerify){
-                System.out.println("Kết quả trùng khớp");
-            }else{
-                System.out.println("Kết quả k trùng khớp");
-            }
-
-        } catch (Exception e) {
-            System.out.println("Lỗi: " + e.getMessage());
-            ScreenshotUtil.captureScreenshot(driver, "AddEmployeeTest");
-        }finally {
-            driver.quit();
+        Boolean isVerify = addEmployee.verifyNewEmployee(firstName, lastName, empId);
+        if(isVerify){
+            System.out.println("Kết quả trùng khớp");
+        }else{
+            System.out.println("Kết quả k trùng khớp");
         }
+
     }
+
+
 }

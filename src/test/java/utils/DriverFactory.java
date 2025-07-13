@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
 
     public static WebDriver getDriver (){
+        //mặc định tạo chromedriver
         String browserName = System.getProperty("browser", "chrome");
         WebDriver driver;
 
