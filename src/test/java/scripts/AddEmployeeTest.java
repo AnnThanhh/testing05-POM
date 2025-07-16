@@ -69,33 +69,30 @@ public class AddEmployeeTest extends BaseTest {
 ////            driver.quit();
 //        }
 //    }
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
     @Test
     public void AddEmployee(){
-        //chờ ô input username sẵn sàng
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //lớp loginpage
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("Admin", "admin123");
 
         System.out.println("Đăng nhập thành công");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='PIM']")));
         DashboardPage dashboardPage = new DashboardPage(driver);
         dashboardPage.goToPimPage();
         System.out.println("Chuyển hướng sang Pim thành công");
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Add Employee']")));
         AddEmployee addEmployee = new AddEmployee(driver);
         addEmployee.goToAddEmployee();
         System.out.println("Chuyển hướng thành công");
 //            String firstName = "Testing";
 //            String lastName = "Automation";
 
-        String filePath = "src/test/java/resources/datatest.xlsv";
-//            Sheet sheet = excelreader.loadSheet("", "");
-//            string firstName = excelreader.getcelldata(sheet, ,)
-        String firstName = ExcelReader.getCellData(filePath, "sheet1", 1, 0);//dòng 2(có vị trí index 1)l; cột 1/A (vị trí index 0)
-        String lastName = ExcelReader.getCellData(filePath, "sheet1", 1,1);//dòng 2(có vị trí index 1)l; cột 2/B (vị trí index 1)
+        String filePath = "src/test/java/resources/datatest.xlsx";
+        String firstName = ExcelReader.getCellData(filePath, "sheet1", 1, 0).trim();//dòng 2(có vị trí index 1)l; cột 1/A (vị trí index 0)
+        String lastName = ExcelReader.getCellData(filePath, "sheet1", 1,1).trim();//dòng 2(có vị trí index 1)l; cột 2/B (vị trí index 1)
         String empId = addEmployee.addNewEmployee(firstName,lastName);
         System.out.println("Thêm thành công");
 
