@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ScreenshotUtil {
-    public static void captureScreenshot(WebDriver driver, String namePrefix){
+    public static String captureScreenshot(WebDriver driver, String namePrefix){
         //kiểm tra xem driver có hỗ trợ không
         if(!(driver instanceof TakesScreenshot)){
             System.out.println("Driver không hỗ trợ chụp màn hình");
@@ -24,16 +24,20 @@ public class ScreenshotUtil {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 //        20250713_091230
         //Tạo nơi lưu file hình ảnh
-        File destFile = new File("screenshot/" + namePrefix + "_" + timeStamp + ".png");
+        File destDir = new File("reports/screenshots");
+        File destFile = new File(destDir, namePrefix + "_" + timeStamp + ".png");
 
         try{
-            Files.createDirectories(destFile.getParentFile().toPath());
+            Files.createDirectories(destDir.toPath());
+            Files.copy(srcFile.toPath(), destFile.toPath());
 
-            Files.copy(srcFile.toPath(),destFile.toPath());
+            System.out.println("Đã chụp màn hình: " + destFile.getAbsolutePath());
 
-            System.out.println("da chup man hinh");
+            // Trả về đường dẫn tương đối tính từ ExtentReport.html
+            return "screenshots/" + destFile.getName();
         } catch (IOException e) {
             System.out.println("Loi luu anh");
+            return null;
         }
     }
 }

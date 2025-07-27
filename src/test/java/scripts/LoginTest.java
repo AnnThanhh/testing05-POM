@@ -2,12 +2,11 @@ package scripts;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.ExcelReader;
-
-import java.time.Duration;
 
 public class LoginTest extends BaseTest {
     @DataProvider(name = "loginData") // cung cấp dữ liệu đầu vào cho các @test
@@ -44,11 +43,18 @@ public class LoginTest extends BaseTest {
             Thread.sleep(2000);
             Boolean isLogged = driver.getCurrentUrl().contains("dashboard");
             System.out.println(isLogged);
-            if(Boolean.parseBoolean(expectedResult) == isLogged){
-                System.out.println("test pass");
-            }else {
-                System.out.println("test fail");
-            }
+//            if(Boolean.parseBoolean(expectedResult) == isLogged){
+//                System.out.println("test pass");
+//
+//            }else {
+//                System.out.println("test fail");
+//            }
+
+            //assertion
+            Assert.assertEquals(isLogged,Boolean.parseBoolean(expectedResult), "sai kết quả mong muốn hoặc test fail");
+
+            System.out.println("test pass");
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
