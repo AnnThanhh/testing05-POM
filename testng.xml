@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--tổng quan và chứa toàn bộ dự án -->
+<suite name="OrangeHRM Test Suite">
+<!--    tập hợp các listener sử dụng trong quá trình test  -->
+    <listeners>
+        <listener class-name="listener.SimpleListeners"/>
+<!--        <listener class-name=""/>-->
+    </listeners>
+<!--    các script test được chạy trong quá trình test -->
+    <test name="LoginTests">
+<!--        class sẽ đại diện cho những script có test method-->
+        <classes>
+            <class name="scripts.LoginTest"/>
+        </classes>
+    </test>
+<!--    <test name="AddEmployeeTest">-->
+<!--        <classes>-->
+<!--            <class name="scripts.AddEmployeeTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>

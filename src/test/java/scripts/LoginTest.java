@@ -41,7 +41,7 @@ public class LoginTest extends BaseTest {
             loginPage.login(username, password);
 
             Thread.sleep(2000);
-            Boolean isLogged = driver.getCurrentUrl().contains("dashboard");
+            Boolean isLogged = driver.getCurrentUrl().contains("Dashboard");
             System.out.println(isLogged);
 //            if(Boolean.parseBoolean(expectedResult) == isLogged){
 //                System.out.println("test pass");
