@@ -60,3 +60,25 @@
 [2025-07-27 11:47:39] [main] INFO  scripts.LoginTest - đang test với username: Admin
 [2025-07-27 11:47:41] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
 [2025-07-27 11:47:41] [main] INFO  scripts.LoginTest - Test pass
+[2025-07-27 11:53:21] [main] INFO  scripts.LoginTest - đang test với username: Admin
+[2025-07-27 11:53:23] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
+[2025-07-27 11:53:28] [main] INFO  scripts.LoginTest - đang test với username: Admin
+[2025-07-27 11:53:32] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
+[2025-07-27 11:53:32] [main] INFO  scripts.LoginTest - Test pass
+[2025-07-27 11:53:37] [main] INFO  scripts.LoginTest - đang test với username: 
+[2025-07-27 11:53:39] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
+[2025-07-27 11:53:39] [main] INFO  scripts.LoginTest - Test pass
+[2025-07-27 11:53:44] [main] INFO  scripts.LoginTest - đang test với username: Admin
+[2025-07-27 11:53:46] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
+[2025-07-27 11:53:46] [main] INFO  scripts.LoginTest - Test pass
+[2025-07-27 11:56:20] [main] INFO  scripts.LoginTest - đang test với username: Admin
+[2025-07-27 11:56:23] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
+[2025-07-27 11:56:27] [main] INFO  scripts.LoginTest - đang test với username: Admin
+[2025-07-27 11:56:30] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
+[2025-07-27 11:56:30] [main] INFO  scripts.LoginTest - Test pass
+[2025-07-27 11:56:34] [main] INFO  scripts.LoginTest - đang test với username: 
+[2025-07-27 11:56:37] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
+[2025-07-27 11:56:37] [main] INFO  scripts.LoginTest - Test pass
+[2025-07-27 11:56:42] [main] INFO  scripts.LoginTest - đang test với username: Admin
+[2025-07-27 11:56:44] [main] INFO  scripts.LoginTest - Kết quả thực tế: false
+[2025-07-27 11:56:44] [main] INFO  scripts.LoginTest - Test pass
